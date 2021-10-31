@@ -1,0 +1,22 @@
+{
+  "name": "pdfzoo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milesAwayAlex/pdfzoo.git"
+  },
+  "author": "AX",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/milesAwayAlex/pdfzoo/issues"
+  },
+  "homepage": "https://github.com/milesAwayAlex/pdfzoo#readme",
+  "dependencies": {
+    "pdf-lib": "^1.17.0"
+  }
+}
