@@ -7,7 +7,14 @@ try {
   const inputFilenames = await readdir(inputFolderPath);
   const inputFilePaths = inputFilenames.map((name) => inputFolderPath + '/' + name);
 
-  console.log('directory readout', inputFilePaths);
+  const inputBuffers = await Promise.all(inputFilePaths.map((path) => readFile(path)));
+  const inputPDFDocs = await Promise.all(inputBuffers.map((buffer) => PDFDocument.load(buffer)));
+  const outputDoc = await PDFDocument.create();
+  const copiedPages = await Promise.all(inputPDFDocs.map((doc) => outputDoc.copyPages(doc, [0])));
+
+  copiedPages.forEach(([page]) => outputDoc.addPage(page));
+  console.log(copiedPages);
+  console.log(outputDoc);
 } catch (e) {
   console.error(e);
 }
