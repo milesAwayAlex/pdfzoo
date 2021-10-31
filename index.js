@@ -11,9 +11,9 @@ try {
   const inputPDFDocs = await Promise.all(inputBuffers.map((buffer) => PDFDocument.load(buffer)));
   const outputDoc = await PDFDocument.create();
   const copiedPages = await Promise.all(inputPDFDocs.map((doc) => outputDoc.copyPages(doc, [0])));
-
-  copiedPages.forEach(([page]) => outputDoc.addPage(page));
-  console.log(copiedPages);
+  const flattenedPages = copiedPages.flat();
+  flattenedPages.forEach((page) => outputDoc.addPage(page));
+  
   console.log(outputDoc);
 } catch (e) {
   console.error(e);
